@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Tickdrant",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/Tickdrant.app/Contents/MacOS/Tickdrant",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build Tickdrant"
+        },
+        {
+            "name": "Run Tickdrant (No Debug)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/Tickdrant.app/Contents/MacOS/Tickdrant",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build Tickdrant",
+            "noDebug": true
+        }
+    ]
+}
