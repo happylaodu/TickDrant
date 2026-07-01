@@ -8,6 +8,9 @@
 import SwiftUI
 import ServiceManagement
 import UserNotifications
+import os
+
+private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "SettingsManager")
 
 class SettingsManager: ObservableObject {
     static let shared = SettingsManager()
@@ -48,7 +51,7 @@ class SettingsManager: ObservableObject {
                     try SMAppService.mainApp.unregister()
                 }
             } catch {
-                print("Failed to update launch at login: \(error)")
+                logger.error("Failed to update launch at login: \(error.localizedDescription, privacy: .public)")
             }
         }
     }
@@ -58,7 +61,7 @@ class SettingsManager: ObservableObject {
             DispatchQueue.main.async {
                 self.notificationsEnabled = granted
                 if let error = error {
-                    print("Notification permission error: \(error)")
+                    logger.error("Notification permission error: \(error.localizedDescription, privacy: .public)")
                 }
             }
         }

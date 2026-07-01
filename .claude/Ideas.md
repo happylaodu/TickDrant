@@ -24,11 +24,6 @@
   - Replace with `NSApplication.didBecomeActiveNotification` / `NSWindow.didBecomeMainNotification` observers, or use SwiftUI's `WindowGroup` `windowToolbarStyle` + scene phase tracking
   - Goal: deterministic main-window reference without polling
 
-- **Idea-12** (2026-06-26): [Improvement] Clean up debug `print()` statements before release
-  - Many `print(...)` calls in `TickdrantApp.swift` (AppDelegate) and `MenuBarManager.swift`
-  - Replace with `os_log` (filter by subsystem) or wrap in `#if DEBUG` blocks
-  - Keeps Release builds quiet; helps avoid Console noise on user machines
-
 - **Idea-11** (2026-06-26): [Documentation] Update README to reflect sandbox reality
   - README currently claims data is in `~/Library/Application Support/Tickdrant/tasks.json`
   - Under App Sandbox the real path is `~/Library/Containers/com.happylaodu.tickdrant/Data/Library/Application Support/Tickdrant/tasks.json`
@@ -120,6 +115,15 @@ Additional improvements over Java version:
   - ✅ `TickdrantApp`: injected `taskManager` into Settings scene environment
   - ✅ Removed misleading static data-location text from About section (sandbox container path was incorrect)
   - ⚠️ Side note (also today): Bundle ID change `com.tickdrant` → `com.happylaodu.tickdrant` moved the sandbox container; one-time manual migration of `tasks.json` + UserDefaults plist from old to new container was needed. User backed up via the new Export feature afterwards.
+
+- **Idea-12** (2026-06-26): [Improvement] Clean up debug `print()` statements before release - ✅ Completed 2026-07-01
+  - ✅ Introduced `os.Logger` (subsystem `com.happylaodu.tickdrant`) with per-file categories
+  - ✅ Replaced 15 informational prints in `TickdrantApp.swift` with `Self.logger.debug` (static logger inside `AppDelegate` — file-scope `let` conflicts with `@main`)
+  - ✅ Replaced 3 prints in `MenuBarManager.swift` with `logger.debug` (file-scope)
+  - ✅ Replaced 2 error prints in `TaskManager.swift` with `logger.error(...localizedDescription, privacy: .public)`
+  - ✅ Replaced 2 error prints in `SettingsManager.swift` with `logger.error(...)`
+  - ✅ Release builds now silent by default; errors still surface via unified logging
+  - ✅ Verified with `xcodebuild ... build` (Debug, macOS) → BUILD SUCCEEDED
 
 - **Idea-2** (2026-03-08): [Config] Set up source control with Git - ✅ Completed 2026-06-26
   - ✅ Git repository already initialized (branch `main`)

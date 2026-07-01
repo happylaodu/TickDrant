@@ -8,6 +8,9 @@
 import SwiftUI
 import AppKit
 import Combine
+import os
+
+private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "MenuBarManager")
 
 class MenuBarManager: NSObject, ObservableObject {
     private var statusItem: NSStatusItem?
@@ -139,12 +142,12 @@ class MenuBarManager: NSObject, ObservableObject {
     }
 
     @objc private func showMainWindow() {
-        print("Show Main Window clicked")
+        logger.debug("Show Main Window clicked")
         NotificationCenter.default.post(name: NSNotification.Name("ShowMainWindow"), object: nil)
     }
 
     @objc private func openSettings() {
-        print("Settings clicked")
+        logger.debug("Settings clicked")
         NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
     }
 
@@ -171,6 +174,6 @@ class MenuBarManager: NSObject, ObservableObject {
 
 extension MenuBarManager: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-        print("Menu opened")
+        logger.debug("Menu opened")
     }
 }

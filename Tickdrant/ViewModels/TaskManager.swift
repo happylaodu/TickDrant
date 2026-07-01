@@ -7,6 +7,9 @@
 
 import Foundation
 import Combine
+import os
+
+private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "TaskManager")
 
 class TaskManager: ObservableObject {
     @Published var tasks: [DueTask] = []
@@ -187,7 +190,7 @@ class TaskManager: ObservableObject {
             let data = try encoder.encode(tasks)
             try data.write(to: saveURL, options: .atomic)
         } catch {
-            print("Failed to save tasks: \(error)")
+            logger.error("Failed to save tasks: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -197,7 +200,7 @@ class TaskManager: ObservableObject {
             let data = try Data(contentsOf: saveURL)
             tasks = try JSONDecoder().decode([DueTask].self, from: data)
         } catch {
-            print("Failed to load tasks: \(error)")
+            logger.error("Failed to load tasks: \(error.localizedDescription, privacy: .public)")
         }
     }
 }
