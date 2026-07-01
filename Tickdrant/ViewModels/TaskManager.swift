@@ -113,6 +113,71 @@ class TaskManager: ObservableObject {
         }
     }
 
+    // MARK: - Export / Import
+
+    enum ImportMode {
+        case replace
+        case merge
+    }
+
+    struct ImportResult {
+        let added: Int
+        let skipped: Int
+        let totalInFile: Int
+    }
+
+    enum ImportError: LocalizedError {
+        case invalidFormat
+
+        var errorDescription: String? {
+            switch self {
+            case .invalidFormat:
+                return "The selected file is not a valid Tickdrant tasks file."
+            }
+        }
+    }
+
+    func exportTasks(to url: URL) throws {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        let data = try encoder.encode(tasks)
+        try data.write(to: url, options: .atomic)
+    }
+
+    func importTasks(from url: URL, mode: ImportMode) throws -> ImportResult {
+        let data = try Data(contentsOf: url)
+
+        // Try ISO8601 first (export format), then fall back to default (legacy in-app format).
+        let imported: [DueTask]
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            imported = try decoder.decode([DueTask].self, from: data)
+        } catch {
+            do {
+                imported = try JSONDecoder().decode([DueTask].self, from: data)
+            } catch {
+                throw ImportError.invalidFormat
+            }
+        }
+
+        switch mode {
+        case .replace:
+            tasks = imported
+            saveTasks()
+            return ImportResult(added: imported.count, skipped: 0, totalInFile: imported.count)
+        case .merge:
+            let existingIDs = Set(tasks.map(\.id))
+            let newTasks = imported.filter { !existingIDs.contains($0.id) }
+            tasks.append(contentsOf: newTasks)
+            saveTasks()
+            return ImportResult(added: newTasks.count,
+                                skipped: imported.count - newTasks.count,
+                                totalInFile: imported.count)
+        }
+    }
+
     // MARK: - Persistence
 
     private func saveTasks() {

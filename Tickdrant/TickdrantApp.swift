@@ -33,6 +33,7 @@ struct TickdrantApp: App {
 
         Settings {
             SettingsView(menuBarManager: menuBarManager)
+                .environmentObject(taskManager)
         }
     }
 

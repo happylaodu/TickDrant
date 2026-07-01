@@ -2,18 +2,44 @@
 
 ## Ideas
 
+- **Idea-15** (2026-06-26): [Config] Prepare App Store Connect listing and submission package
+  - Create App ID `com.happylaodu.tickdrant` in Apple Developer portal
+  - In App Store Connect: app name (Tickdrant), subtitle, description, keywords, support URL, marketing URL
+  - Privacy Policy URL (even though no data is collected — App Store still requires one)
+  - Fill App Privacy section ("Data Not Collected")
+  - Prepare 4–10 screenshots (1280×800 or higher for macOS)
+  - Set pricing & availability, age rating
+  - Archive build with Release configuration, validate, upload via Xcode Organizer
+  - Submit for review
+
+- **Idea-14** (2026-06-26): [Localization] Add Chinese (Simplified) localization
+  - Add `zh-Hans` to project supported languages
+  - Use String Catalog (`.xcstrings`) — already enabled via `LOCALIZATION_PREFERS_STRING_CATALOGS = YES`
+  - Translate all user-facing strings in SettingsView, TaskEditView, TaskRowView, QuadrantView, ContentView, MenuBarManager menu items
+  - Verify date/time formatting respects locale
+
+- **Idea-13** (2026-06-26): [Improvement] Refactor AppDelegate window-finding logic
+  - Current code in `TickdrantApp.swift` uses a 0.5s `Timer` polling loop to find the main window
+  - Fragile; could fail or bind to wrong window in edge cases
+  - Replace with `NSApplication.didBecomeActiveNotification` / `NSWindow.didBecomeMainNotification` observers, or use SwiftUI's `WindowGroup` `windowToolbarStyle` + scene phase tracking
+  - Goal: deterministic main-window reference without polling
+
+- **Idea-12** (2026-06-26): [Improvement] Clean up debug `print()` statements before release
+  - Many `print(...)` calls in `TickdrantApp.swift` (AppDelegate) and `MenuBarManager.swift`
+  - Replace with `os_log` (filter by subsystem) or wrap in `#if DEBUG` blocks
+  - Keeps Release builds quiet; helps avoid Console noise on user machines
+
+- **Idea-11** (2026-06-26): [Documentation] Update README to reflect sandbox reality
+  - README currently claims data is in `~/Library/Application Support/Tickdrant/tasks.json`
+  - Under App Sandbox the real path is `~/Library/Containers/com.happylaodu.tickdrant/Data/Library/Application Support/Tickdrant/tasks.json`
+  - Either remove the static path or replace with guidance to use Settings → Data → Export/Import
+  - Also update Bundle ID references if any
+
 - **Idea-10** (2026-06-19): [Feature] Show red badge on menu bar icon for tasks nearing due date
   - When tasks are approaching their due dates, display a small red numeric badge on the menu bar icon
   - Badge shows the count of tasks that are due soon (or overdue)
   - Helps users notice urgent tasks without opening the app
   - Need to define the threshold for "nearing due" (e.g., overdue + due within X hours/days)
-
-- **Idea-8** (2026-03-08): [Feature] Add data export and import functionality
-  - Export tasks to JSON file for backup
-  - Import tasks from JSON file
-  - Add Export/Import buttons in Settings or File menu
-  - Support merging imported tasks with existing ones
-  - Validate JSON format during import
 
 - **Idea-7** (2026-03-08): [Feature] Add notification system for task reminders
   - Implement local notifications before tasks are due
@@ -39,12 +65,6 @@
   - Display in task edit/add dialogs as multi-line text area
   - Show comment in task panel (e.g., below task name or in tooltip)
   - Save/load comments with task data
-
-- **Idea-2** (2026-03-08): [Config] Set up source control with Git
-  - Initialize Git repository for the project
-  - Create .gitignore file to exclude build artifacts, IDE files, and temporary files (already exists)
-  - Make initial commit with current source code
-  - Consider adding remote repository (GitHub/GitLab) for backup and collaboration
 
 <!-- Add new ideas here -->
 
@@ -92,6 +112,20 @@ Additional improvements over Java version:
   - ✅ `QuadrantView` `TaskBoxView` context menu: same split for recurring tasks
   - ✅ Wired `onCompleteAndNext` through `QuadrantView` → `ContentView` → `TaskManager.completeAndNext`
   - ✅ Tooltips on row buttons clarify intent (advance to next due vs. end series entirely)
+
+- **Idea-8** (2026-03-08): [Feature] Add data export and import functionality - ✅ Completed 2026-06-26
+  - ✅ `TaskManager`: added `exportTasks(to:)` (ISO8601 dates) and `importTasks(from:mode:)` with `.merge` (UUID-dedupe) and `.replace` modes; invalid JSON throws `ImportError.invalidFormat` without mutating existing data
+  - ✅ `SettingsView`: new "Data" section with Export Tasks… / Import Tasks… buttons; uses `NSSavePanel` / `NSOpenPanel`; default filename `tickdrant-tasks-YYYYMMDD.json`
+  - ✅ Import flow: 3-button alert (Merge / Replace All / Cancel) with summary alert reporting added vs skipped counts
+  - ✅ `TickdrantApp`: injected `taskManager` into Settings scene environment
+  - ✅ Removed misleading static data-location text from About section (sandbox container path was incorrect)
+  - ⚠️ Side note (also today): Bundle ID change `com.tickdrant` → `com.happylaodu.tickdrant` moved the sandbox container; one-time manual migration of `tasks.json` + UserDefaults plist from old to new container was needed. User backed up via the new Export feature afterwards.
+
+- **Idea-2** (2026-03-08): [Config] Set up source control with Git - ✅ Completed 2026-06-26
+  - ✅ Git repository already initialized (branch `main`)
+  - ✅ `.gitignore` already in place (Xcode, Swift, macOS, plus `.claude/settings.local.json`)
+  - ✅ Created initial commit `3e36485` with all source code (34 files, 3324 insertions)
+  - ✅ Added remote `origin` → `git@github.com:happylaodu/TickDrant.git` and pushed `main`
 
 - **Idea-5** (2026-03-08): [Feature] Add Settings window with basic preferences - ✅ Completed 2026-03-08
   - ✅ Created SettingsView.swift with settings UI
