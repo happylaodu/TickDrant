@@ -9,7 +9,7 @@ A native macOS countdown timer application built with Swift and SwiftUI. Rewritt
 - **Recurring Tasks**: Support for recurring tasks with customizable intervals (hours, days, weeks, months, years)
 - **Overdue Handling**: Visual indicators for overdue tasks with completion options for recurring tasks
 - **Auto-sorting**: Tasks automatically sorted by due date/time
-- **Data Persistence**: Tasks saved to `~/Library/Application Support/Tickdrant/tasks.json`
+- **Data Persistence**: Tasks saved locally; back up or migrate via Settings → Data → Export / Import
 - **Native macOS UI**: Built with SwiftUI for optimal macOS experience
 
 ## Requirements
@@ -40,10 +40,7 @@ A native macOS countdown timer application built with Swift and SwiftUI. Rewritt
 
 ## Data Storage
 
-Tasks are stored as JSON in:
-```
-~/Library/Application Support/Tickdrant/tasks.json
-```
+Tickdrant runs inside the macOS App Sandbox, so task data lives in the app's private container and is not intended to be edited by hand. To back up, migrate, or share your tasks, use **Settings → Data → Export Tasks…** to save a JSON file, and **Import Tasks…** to restore or merge one.
 
 ## Architecture
 
@@ -78,4 +75,4 @@ Tickdrant/
 
 ## License
 
-Copyright © 2026. All rights reserved.
+Copyright © 2026 Zhifeng Du. All rights reserved.

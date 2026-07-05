@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import os
 
-private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "TaskManager")
+private let logger = Logger(subsystem: "com.brightjune.Tickdrant", category: "TaskManager")
 
 class TaskManager: ObservableObject {
     @Published var tasks: [DueTask] = []

@@ -24,12 +24,6 @@
   - Replace with `NSApplication.didBecomeActiveNotification` / `NSWindow.didBecomeMainNotification` observers, or use SwiftUI's `WindowGroup` `windowToolbarStyle` + scene phase tracking
   - Goal: deterministic main-window reference without polling
 
-- **Idea-11** (2026-06-26): [Documentation] Update README to reflect sandbox reality
-  - README currently claims data is in `~/Library/Application Support/Tickdrant/tasks.json`
-  - Under App Sandbox the real path is `~/Library/Containers/com.happylaodu.tickdrant/Data/Library/Application Support/Tickdrant/tasks.json`
-  - Either remove the static path or replace with guidance to use Settings → Data → Export/Import
-  - Also update Bundle ID references if any
-
 - **Idea-10** (2026-06-19): [Feature] Show red badge on menu bar icon for tasks nearing due date
   - When tasks are approaching their due dates, display a small red numeric badge on the menu bar icon
   - Badge shows the count of tasks that are due soon (or overdue)
@@ -115,6 +109,11 @@ Additional improvements over Java version:
   - ✅ `TickdrantApp`: injected `taskManager` into Settings scene environment
   - ✅ Removed misleading static data-location text from About section (sandbox container path was incorrect)
   - ⚠️ Side note (also today): Bundle ID change `com.tickdrant` → `com.happylaodu.tickdrant` moved the sandbox container; one-time manual migration of `tasks.json` + UserDefaults plist from old to new container was needed. User backed up via the new Export feature afterwards.
+
+- **Idea-11** (2026-06-26): [Documentation] Update README to reflect sandbox reality - ✅ Completed 2026-07-04
+  - ✅ Replaced misleading static path in Features bullet with guidance to use Settings → Data → Export / Import
+  - ✅ Rewrote "Data Storage" section: notes App Sandbox container is private, points users at Export/Import for backup and migration
+  - ✅ No stale Bundle ID references remained in README
 
 - **Idea-12** (2026-06-26): [Improvement] Clean up debug `print()` statements before release - ✅ Completed 2026-07-01
   - ✅ Introduced `os.Logger` (subsystem `com.happylaodu.tickdrant`) with per-file categories

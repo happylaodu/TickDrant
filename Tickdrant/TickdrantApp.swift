@@ -53,7 +53,7 @@ struct TickdrantApp: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
-    private static let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "AppDelegate")
+    private static let logger = Logger(subsystem: "com.brightjune.Tickdrant", category: "AppDelegate")
     var menuBarManager: MenuBarManager?
     private var mainWindow: NSWindow?
     private var windowSetupTimer: Timer?

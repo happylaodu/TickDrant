@@ -10,7 +10,7 @@ import ServiceManagement
 import UserNotifications
 import os
 
-private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "SettingsManager")
+private let logger = Logger(subsystem: "com.brightjune.Tickdrant", category: "SettingsManager")
 
 class SettingsManager: ObservableObject {
     static let shared = SettingsManager()

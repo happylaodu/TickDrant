@@ -10,7 +10,7 @@ import AppKit
 import Combine
 import os
 
-private let logger = Logger(subsystem: "com.happylaodu.tickdrant", category: "MenuBarManager")
+private let logger = Logger(subsystem: "com.brightjune.Tickdrant", category: "MenuBarManager")
 
 class MenuBarManager: NSObject, ObservableObject {
     private var statusItem: NSStatusItem?
