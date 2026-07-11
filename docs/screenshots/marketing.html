@@ -86,6 +86,16 @@
     font-size: 14px;
     margin-top: 6px;
   }
+
+  /* Isolate mode: ?shot=N shows only the Nth shot at 0,0, no padding, no labels */
+  body.isolate {
+    padding: 0;
+    background: transparent;
+    gap: 0;
+  }
+  body.isolate .label { display: none; }
+  body.isolate .shot { border-radius: 0; display: none; }
+  body.isolate .shot.active { display: block; }
 </style>
 </head>
 <body>
@@ -144,5 +154,15 @@
   <div class="window"><img src="06-settings.png" alt=""></div>
 </section>
 
+<script>
+  // When loaded with ?shot=N, isolate that shot for headless screenshotting.
+  const p = new URLSearchParams(location.search).get('shot');
+  if (p !== null) {
+    const n = parseInt(p, 10);
+    document.body.classList.add('isolate');
+    const shots = document.querySelectorAll('section.shot');
+    if (shots[n - 1]) shots[n - 1].classList.add('active');
+  }
+</script>
 </body>
 </html>
