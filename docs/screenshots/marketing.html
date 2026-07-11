@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tickdrant — App Store screenshots</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #222; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    color: white;
+  }
+
+  /* Each shot is exactly 1440x900 CSS px → 2880x1800 on Retina screencapture */
+  .shot {
+    width: 1440px;
+    height: 900px;
+    background: linear-gradient(135deg, #6a79e3 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;  /* subtle rounding to distinguish shots; strip when screenshotting */
+  }
+
+  /* Remove border-radius when printing (screencapture will crop rectangle anyway) */
+  @media print { .shot { border-radius: 0; } }
+
+  .shot .text {
+    position: absolute;
+    top: 72px;
+    left: 88px;
+    right: 88px;
+    z-index: 2;
+  }
+  .shot h1 {
+    font-size: 88px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .shot p {
+    font-size: 28px;
+    font-weight: 500;
+    opacity: 0.9;
+    letter-spacing: -0.01em;
+  }
+
+  /* App window container */
+  .shot .window {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    width: 960px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.45),
+      0 16px 40px rgba(0,0,0,0.25);
+  }
+  .shot .window img { width: 100%; display: block; }
+
+  /* Special layout for the menu bar shot — the dropdown image is small,
+     so we scale it differently and vertically centre it. */
+  .shot.menubar .window {
+    bottom: auto;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    width: 620px;
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.45),
+      0 16px 40px rgba(0,0,0,0.25);
+    border-radius: 20px;
+  }
+
+  /* Section labels (for iteration; will be off-canvas when screencapturing) */
+  .label {
+    color: #888;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="label">Shot 1 — Hero (Four Quadrants)</div>
+<section class="shot">
+  <div class="text">
+    <h1>See Priorities Clearly</h1>
+    <p>Four quadrants · Live countdowns · Automatic urgency</p>
+  </div>
+  <div class="window"><img src="01-quadrants-hero.png" alt=""></div>
+</section>
+
+<div class="label">Shot 2 — Task List</div>
+<section class="shot">
+  <div class="text">
+    <h1>Every Deadline in View</h1>
+    <p>Full list · Overdue flags · Recurring tasks</p>
+  </div>
+  <div class="window"><img src="02-task-list.png" alt=""></div>
+</section>
+
+<div class="label">Shot 3 — Completed</div>
+<section class="shot">
+  <div class="text">
+    <h1>Track What You Ship</h1>
+    <p>Punctuality labels · Early · On time · Overdue</p>
+  </div>
+  <div class="window"><img src="03-completed.png" alt=""></div>
+</section>
+
+<div class="label">Shot 4 — Edit Task</div>
+<section class="shot">
+  <div class="text">
+    <h1>Focused Task Editor</h1>
+    <p>Set due dates · Assign importance · Configure recurrence</p>
+  </div>
+  <div class="window"><img src="04-edit-task.png" alt=""></div>
+</section>
+
+<div class="label">Shot 5 — Menu Bar</div>
+<section class="shot menubar">
+  <div class="text">
+    <h1>Always One Click Away</h1>
+    <p>Menu bar mode · Next task preview · Stays out of the way</p>
+  </div>
+  <div class="window"><img src="05-menu-bar-dropdown.png" alt=""></div>
+</section>
+
+<div class="label">Shot 6 — Settings</div>
+<section class="shot">
+  <div class="text">
+    <h1>Yours to Configure</h1>
+    <p>Launch at login · Menu bar or Dock · Export &amp; import</p>
+  </div>
+  <div class="window"><img src="06-settings.png" alt=""></div>
+</section>
+
+</body>
+</html>

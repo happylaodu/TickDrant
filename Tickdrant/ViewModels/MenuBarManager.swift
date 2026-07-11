@@ -135,6 +135,11 @@ class MenuBarManager: NSObject, ObservableObject {
         settingsItem.target = self
         menu.addItem(settingsItem)
 
+        // About
+        let aboutItem = NSMenuItem(title: "About Tickdrant", action: #selector(openAbout), keyEquivalent: "")
+        aboutItem.target = self
+        menu.addItem(aboutItem)
+
         menu.addItem(NSMenuItem.separator())
 
         // Quit
@@ -151,6 +156,12 @@ class MenuBarManager: NSObject, ObservableObject {
     @objc private func openSettings() {
         logger.debug("Settings clicked")
         NotificationCenter.default.post(name: NSNotification.Name("ShowSettings"), object: nil)
+    }
+
+    @objc private func openAbout() {
+        logger.debug("About clicked")
+        NSApp.activate(ignoringOtherApps: true)
+        NotificationCenter.default.post(name: NSNotification.Name("ShowAbout"), object: nil)
     }
 
     private func formatCountdown(to date: Date) -> String {

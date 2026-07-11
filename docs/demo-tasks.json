@@ -1,0 +1,159 @@
+[
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-11T13:41:25Z",
+    "id": "9E831506-9170-4BB6-B179-95D5C8C0D162",
+    "importance": 9,
+    "isRecurring": false,
+    "name": "Return vendor contract",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-11T22:41:25Z",
+    "id": "F64FA592-4C33-4DE3-A0A4-225132B37897",
+    "importance": 7,
+    "isRecurring": false,
+    "name": "Thursday board deck",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-23T16:41:25Z",
+    "id": "0BE20E7B-5AD1-4322-A5B1-F64F7BE03784",
+    "importance": 9,
+    "isRecurring": false,
+    "name": "Perf review self-assessment",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-08-05T16:41:25Z",
+    "id": "0A464306-BFDA-4D63-946D-42CBBEA3627C",
+    "importance": 6,
+    "isRecurring": false,
+    "name": "5-year strategy memo",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-11T20:41:25Z",
+    "id": "1299BA4F-9A51-46D0-A223-F3B89777746D",
+    "importance": 3,
+    "isRecurring": false,
+    "name": "Reply to conference invite",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-14T16:41:25Z",
+    "id": "DA19E522-E61E-4F15-BF0C-C701E717DACB",
+    "importance": 4,
+    "isRecurring": true,
+    "name": "Weekly team 1:1s",
+    "recurrenceUnit": "Weeks",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-08-20T16:41:25Z",
+    "id": "CEA4DF2E-5B3D-44CF-B5C8-841934E50CBB",
+    "importance": 2,
+    "isRecurring": false,
+    "name": "Reorganize photos",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": false,
+    "dueDateTime": "2026-07-31T16:41:25Z",
+    "id": "247B00F8-C1B2-4E89-B9A3-90FC3E3FE491",
+    "importance": 3,
+    "isRecurring": true,
+    "name": "Card statement review",
+    "recurrenceUnit": "Months",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-07-08T16:41:25Z",
+    "dueDateTime": "2026-07-10T16:41:25Z",
+    "id": "90E9E22D-01D1-4682-BD51-A956CEAF68B4",
+    "importance": 6,
+    "isRecurring": false,
+    "name": "Submit Q2 expense report",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-07-04T16:41:25Z",
+    "dueDateTime": "2026-07-07T16:41:25Z",
+    "id": "E307AC33-1372-4062-863C-90CCC2C0A431",
+    "importance": 8,
+    "isRecurring": false,
+    "name": "File Q1 taxes",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-07-04T16:41:25Z",
+    "dueDateTime": "2026-07-04T16:41:25Z",
+    "id": "98FF826A-3F90-492B-A748-C468F30EF4B5",
+    "importance": 7,
+    "isRecurring": false,
+    "name": "Renew driver's license",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-06-27T16:41:25Z",
+    "dueDateTime": "2026-06-27T16:41:25Z",
+    "id": "69D5BF94-4C64-4249-BED5-8FAE882311F8",
+    "importance": 6,
+    "isRecurring": false,
+    "name": "Prep quarterly review agenda",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-06-30T16:41:25Z",
+    "dueDateTime": "2026-07-05T16:41:25Z",
+    "id": "934BE151-1A53-4DA6-B131-B080B2F89445",
+    "importance": 5,
+    "isRecurring": false,
+    "name": "Book flight to NYC",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-06-30T16:41:25Z",
+    "dueDateTime": "2026-06-29T16:41:25Z",
+    "id": "BD5F52AA-FC07-4B1E-9144-52C74F599938",
+    "importance": 5,
+    "isRecurring": false,
+    "name": "Send birthday card to Mom",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  },
+  {
+    "completed": true,
+    "completedDateTime": "2026-07-03T16:41:25Z",
+    "dueDateTime": "2026-07-01T16:41:25Z",
+    "id": "D02A311E-CC77-4645-81B2-6DB64A48D12D",
+    "importance": 4,
+    "isRecurring": false,
+    "name": "Book dentist appointment",
+    "recurrenceUnit": "Days",
+    "recurrenceValue": 1
+  }
+]

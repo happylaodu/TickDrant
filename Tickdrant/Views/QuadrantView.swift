@@ -133,8 +133,9 @@ struct QuadrantView: View {
 
             // Measure text width
             let textSize = (task.name as NSString).size(withAttributes: [.font: labelFont])
-            let symbolWidth: CGFloat = task.isOverdue ? 20 : 0
-            let boxWidth = textSize.width + symbolWidth + 20
+            let overdueSymbolWidth: CGFloat = task.isOverdue ? 20 : 0
+            let recurringSymbolWidth: CGFloat = task.isRecurring ? 16 : 0
+            let boxWidth = textSize.width + overdueSymbolWidth + recurringSymbolWidth + 20
             let boxHeight: CGFloat = 30
 
             var boxX = x - boxWidth / 2
@@ -420,6 +421,10 @@ private struct TaskBoxView: View {
                 Text("▲")
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(Color(red: 220/255, green: 20/255, blue: 60/255))
+            }
+            if task.isRecurring {
+                Text("🔄")
+                    .font(.system(size: 10))
             }
             Text(task.name)
                 .font(.system(size: 12, weight: .bold))

@@ -88,18 +88,6 @@ struct SettingsView: View {
                         .font(.headline)
                 }
 
-                Section {
-                    HStack {
-                        Text("App Version:")
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Text(appVersion)
-                            .foregroundColor(.secondary)
-                    }
-                } header: {
-                    Text("About")
-                        .font(.headline)
-                }
             }
             .formStyle(.grouped)
             .padding()
@@ -126,12 +114,6 @@ struct SettingsView: View {
                 NSApp.setActivationPolicy(.regular)
             }
         }
-    }
-
-    private var appVersion: String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
-        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
-        return "\(version) (\(build))"
     }
 
     private func updateDisplayLocation(_ location: DisplayLocation) {

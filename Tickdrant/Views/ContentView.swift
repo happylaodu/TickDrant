@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var taskManager: TaskManager
     @EnvironmentObject var menuBarManager: MenuBarManager
+    @Environment(\.openWindow) private var openWindow
     @State private var showingAddTask = false
     @State private var showingSettings = false
     @State private var selectedTask: DueTask?
@@ -85,6 +86,9 @@ struct ContentView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("TriggerSettingsSheet"))) { _ in
             showingSettings = true
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowAbout"))) { _ in
+            openWindow(id: "about")
         }
     }
 

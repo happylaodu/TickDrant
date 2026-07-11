@@ -20,6 +20,7 @@
 		A10000011 /* QuadrantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000013 /* QuadrantView.swift */; };
 		A10000012 /* CompletedTaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000014 /* CompletedTaskRowView.swift */; };
 		A10000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A20000015 /* PrivacyInfo.xcprivacy */; };
+		A10000014 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000016 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A20000013 /* QuadrantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadrantView.swift; sourceTree = "<group>"; };
 		A20000014 /* CompletedTaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTaskRowView.swift; sourceTree = "<group>"; };
 		A20000015 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A20000016 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A30000001 /* Tickdrant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tickdrant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				A20000010 /* SettingsView.swift */,
 				A20000013 /* QuadrantView.swift */,
 				A20000014 /* CompletedTaskRowView.swift */,
+				A20000016 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				A10000010 /* MenuBarManager.swift in Sources */,
 				A10000011 /* QuadrantView.swift in Sources */,
 				A10000012 /* CompletedTaskRowView.swift in Sources */,
+				A10000014 /* AboutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

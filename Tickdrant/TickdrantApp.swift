@@ -30,12 +30,20 @@ struct TickdrantApp: App {
         .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .appInfo) {
+                AboutMenuButton()
+            }
         }
 
         Settings {
             SettingsView(menuBarManager: menuBarManager)
                 .environmentObject(taskManager)
         }
+
+        Window("About Tickdrant", id: "about") {
+            AboutView()
+        }
+        .windowResizability(.contentSize)
     }
 
     private func updateActivationPolicy() {
@@ -48,6 +56,19 @@ struct TickdrantApp: App {
             NSApp.setActivationPolicy(.accessory)
         case .both:
             NSApp.setActivationPolicy(.regular)
+        }
+    }
+}
+
+/// Opens the custom About window from the app menu.
+/// Needs to live in its own View so it can pick up `openWindow` from the environment.
+private struct AboutMenuButton: View {
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some View {
+        Button("About Tickdrant") {
+            openWindow(id: "about")
+            NSApp.activate(ignoringOtherApps: true)
         }
     }
 }
