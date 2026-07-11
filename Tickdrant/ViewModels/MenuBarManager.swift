@@ -52,7 +52,9 @@ class MenuBarManager: NSObject, ObservableObject {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "clock.badge.checkmark", accessibilityDescription: "Tickdrant")
+            let icon = NSImage(named: "MenuBarIcon")
+            icon?.isTemplate = true
+            button.image = icon
             button.imagePosition = .imageLeading
         }
 
